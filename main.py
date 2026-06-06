@@ -3,9 +3,11 @@ import json
 def add_task(user_task):
     with open("tasks.json", 'r') as file:
         data = json.load(file)
-        change = data["tasks"].append(user_task)
+        
+    data["tasks"].append(user_task)
+    
     with open("tasks.json", 'w') as file:
-        json.dump(change, file)
+        json.dump(data, file, indent=4)
 
 
 def read_tasks():

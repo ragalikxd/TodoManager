@@ -1,6 +1,9 @@
 {
     "tasks": [
-        "work on python code",
-        "Make a dinner"
+        {
+            "id": 1,
+            "name": "take a nap",
+            "done": false
+        }
     ]
 }

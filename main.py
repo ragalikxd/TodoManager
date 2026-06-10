@@ -7,7 +7,11 @@ def load_data():
 
 def add_task(user_task, data):
  
-    data["tasks"].append(user_task)
+    data["tasks"].append({
+        'id': len(data['tasks']) + 1,
+        'name': user_task, 
+        'done': False
+        })
     
     with open("tasks.json", 'w') as file:
         json.dump(data, file, indent=4)

@@ -26,8 +26,9 @@ def main():
     while True: 
         print("\nПунктц управления") 
         print("[1] Добавить задачу") 
-        print("[2] Посмотреть задачи") 
-        print("[3] Выход") 
+        print("[2] Посмотреть задачи")
+        print("[3] Поменить выполеную задачу")
+        print("[4] Выход") 
         
         user_choice = int(input()) 
         
@@ -39,8 +40,20 @@ def main():
         elif user_choice == 2: 
             for task in data["tasks"]:
                 print(task["name"])
+                
+        elif user_choice == 3:
+            while True:
+                for index, task in enumerate(data["tasks"]):
+                    print(f'[{index + 1}] {task["name"]}')
 
-        elif user_choice == 3: 
+                user_task_choice = int(input())
+                
+                for task in data["tasks"]:
+                    if user_task_choice == task["id"]:
+                        print(task['name'])
+                break
+
+        elif user_choice == 4: 
             print("Досвидания!") 
             break
 

@@ -16,13 +16,7 @@ def add_task(user_task, data):
     with open("tasks.json", 'w') as file:
         json.dump(data, file, indent=4)
 
-
-def read_tasks():
-	with open("tasks.json", 'r') as file:
-		data = json.load(file)
-	return data["tasks"]
-
-
+    
 def main():
   
     data = load_data()
@@ -40,7 +34,7 @@ def main():
             add_task(user_task, data) 
             print("Задача успешно записана!") 
         elif user_choice == 2: 
-            print(read_tasks()) 
+            print(data['tasks']) 
         elif user_choice == 3: 
             print("Досвидания!") 
             break

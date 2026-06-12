@@ -34,7 +34,8 @@ def main():
             add_task(user_task, data) 
             print("Задача успешно записана!") 
         elif user_choice == 2: 
-            print(data['tasks']) 
+            for task in data["tasks"]:
+                print(task["name"]) 
         elif user_choice == 3: 
             print("Досвидания!") 
             break

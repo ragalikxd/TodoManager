@@ -4,6 +4,11 @@
             "id": 1,
             "name": "take a nap",
             "done": false
+        },
+        {
+            "id": 2,
+            "name": "go gym",
+            "done": false
         }
     ]
 }

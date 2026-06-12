@@ -7,17 +7,18 @@ def load_data():
     return data
 
 
-def add_task(user_task, data):
- 
+def add_task(data):
+
+    user_task = str(input("Введите задачу: "))
+
     data["tasks"].append({
         'id': len(data['tasks']) + 1,
         'name': user_task, 
         'done': False
         })
-    
     with open("tasks.json", 'w') as file:
         json.dump(data, file, indent=4)
-
+    print("\nЗадача успешно записана!")
 
 def compited_task(data):
    while True:
@@ -48,10 +49,8 @@ def main():
         
         user_choice = int(input()) 
         
-        if user_choice == 1: 
-            user_task = str(input("Введите задачу: ")) 
-            add_task(user_task, data) 
-            print("\nЗадача успешно записана!")
+        if user_choice == 1:  
+            add_task(data)
 
         elif user_choice == 2: 
             for task in data["tasks"]:

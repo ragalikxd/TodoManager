@@ -18,7 +18,23 @@ def add_task(user_task, data):
     with open("tasks.json", 'w') as file:
         json.dump(data, file, indent=4)
 
-    
+
+def compited_task(data):
+   while True:
+        for index, task in enumerate(data["tasks"]):
+            print(f'[{index + 1}] {task["name"]}')
+
+        user_task_choice = int(input())
+                
+        for task in data["tasks"]:
+            if user_task_choice == task["id"]:
+                task['done'] = True
+                with open("tasks.json", 'w') as file:
+                    json.dump(data, file, indent=4)
+                print('\nЗадача выполнена!')
+        break 
+
+
 def main():
   
     data = load_data()
@@ -35,23 +51,14 @@ def main():
         if user_choice == 1: 
             user_task = str(input("Введите задачу: ")) 
             add_task(user_task, data) 
-            print("Задача успешно записана!")
+            print("\nЗадача успешно записана!")
 
         elif user_choice == 2: 
             for task in data["tasks"]:
                 print(task["name"])
                 
         elif user_choice == 3:
-            while True:
-                for index, task in enumerate(data["tasks"]):
-                    print(f'[{index + 1}] {task["name"]}')
-
-                user_task_choice = int(input())
-                
-                for task in data["tasks"]:
-                    if user_task_choice == task["id"]:
-                        print(task['name'])
-                break
+            compited_task(data)
 
         elif user_choice == 4: 
             print("Досвидания!") 

@@ -20,6 +20,15 @@ def add_task(data):
         json.dump(data, file, indent=4)
     print("\nЗадача успешно записана!")
 
+
+def delete_task(data):
+    for task in data["tasks"]:
+        if task["done"] == True:
+            data['tasks'].remove(task)
+    with open("tasks.json", 'w') as file:
+        json.dump(data, file, indent=4)
+            
+
 def compited_task(data):
    while True:
         for index, task in enumerate(data["tasks"]):
@@ -58,6 +67,7 @@ def main():
                 
         elif user_choice == 3:
             compited_task(data)
+            delete_task(data)
 
         elif user_choice == 4: 
             print("Досвидания!") 

@@ -1,24 +1,3 @@
 {
-    "tasks": [
-        {
-            "id": 1,
-            "name": "take a nap",
-            "done": true
-        },
-        {
-            "id": 2,
-            "name": "go gym",
-            "done": false
-        },
-        {
-            "id": 3,
-            "name": "lern python",
-            "done": false
-        },
-        {
-            "id": 4,
-            "name": "take a shower",
-            "done": false
-        }
-    ]
+    "tasks": []
 }

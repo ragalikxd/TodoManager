@@ -1,9 +1,4 @@
 {
-    "tasks": [
-        {
-            "id": 1,
-            "name": "lern python",
-            "done": false
-        }
-    ]
+    "tasks": [],
+    "comleted_tasks": []
 }

@@ -22,11 +22,21 @@ def add_task(data):
 
 
 def delete_task(data):
-    for task in data["tasks"]:
-        if task["done"] == True:
-            data['tasks'].remove(task)
-    with open("tasks.json", 'w') as file:
-        json.dump(data, file, indent=4)
+    while True:
+        for index, task in enumerate(data["tasks"]):
+            print(f'[{index + 1}] {task["name"]}')
+            
+        user_task_choice = int(input())
+        
+        for task in data["tasks"]:
+            if user_task_choice == task["id"]:
+                data['tasks'].remove(task)
+                
+        with open("tasks.json", 'w') as file:
+            json.dump(data, file, indent=4)
+        print("Задача успешно удалена!")
+        break
+    
             
 
 def compited_task(data):
@@ -42,6 +52,7 @@ def compited_task(data):
                 with open("tasks.json", 'w') as file:
                     json.dump(data, file, indent=4)
                 print('\nЗадача выполнена!')
+        
         break 
 
 
@@ -53,7 +64,7 @@ def main():
         print("\nПункт управления") 
         print("\n[1] Добавить задачу") 
         print("[2] Посмотреть задачи")
-        print("[3] Выполнить задачу")
+        print("[3] Удалить задачу задачу")
         print("[4] Выход") 
         
         user_choice = int(input()) 
@@ -64,11 +75,10 @@ def main():
         elif user_choice == 2:
             print("Задачи:\n")
             for task in data["tasks"]:
-                print(task["name"])
+                print(f'[{task["id"]}] {task["name"]}')
             print(f"\nВсего задач: {len(data["tasks"])}")
   
         elif user_choice == 3:
-            compited_task(data)
             delete_task(data)
 
         elif user_choice == 4: 

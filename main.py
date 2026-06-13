@@ -79,7 +79,10 @@ def main():
             print(f"\nВсего задач: {len(data["tasks"])}")
   
         elif user_choice == 3:
-            delete_task(data)
+            if len(data["tasks"]) > 0:
+                delete_task(data)
+            else:
+                print("\nЗадач нет!")
 
         elif user_choice == 4: 
             print("Досвидания!") 

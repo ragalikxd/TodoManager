@@ -50,10 +50,10 @@ def main():
     data = load_data()
     
     while True: 
-        print("\nПунктц управления") 
-        print("[1] Добавить задачу") 
+        print("\nПункт управления") 
+        print("\n[1] Добавить задачу") 
         print("[2] Посмотреть задачи")
-        print("[3] Поменить выполеную задачу")
+        print("[3] Выполнить задачу")
         print("[4] Выход") 
         
         user_choice = int(input()) 
@@ -61,10 +61,12 @@ def main():
         if user_choice == 1:  
             add_task(data)
 
-        elif user_choice == 2: 
+        elif user_choice == 2:
+            print("Задачи:\n")
             for task in data["tasks"]:
                 print(task["name"])
-                
+            print(f"\nВсего задач: {len(data["tasks"])}")
+  
         elif user_choice == 3:
             compited_task(data)
             delete_task(data)

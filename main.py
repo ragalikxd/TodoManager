@@ -8,6 +8,7 @@ def load_data():
 
 
 def check_tasks(data):
+    print("-" * 25)
     if len(data["tasks"]) > 0:
         print("Задачи:\n")
         for task in data["tasks"]:
@@ -15,10 +16,11 @@ def check_tasks(data):
         print(f"\nВсего задач: {len(data["tasks"])}")
     else:
         print("Задач нет!")
+    print("-" * 25)
 
 
 def add_task(data):
-
+    print("-" * 25)
     user_task = str(input("Введите задачу: "))
 
     data["tasks"].append({
@@ -29,15 +31,17 @@ def add_task(data):
     with open("tasks.json", 'w') as file:
         json.dump(data, file, indent=4)
     print("\nЗадача успешно записана!")
+    print("-" * 25)
 
 
 def delete_task(data):
+    print("-" * 25)
     if len(data["tasks"]) > 0:
         while True:
             for index, task in enumerate(data["tasks"]):
                 print(f'[{index + 1}] {task["name"]}')
                 
-            user_task_choice = int(input())
+            user_task_choice = int(input("\nВыберите задачу, которую хотите удалить: "))
             
             for task in data["tasks"]:
                 if user_task_choice == task["id"]:
@@ -45,10 +49,11 @@ def delete_task(data):
                     
             with open("tasks.json", 'w') as file:
                 json.dump(data, file, indent=4)
-            print("Задача успешно удалена!")
+            print("\nЗадача успешно удалена!")
             break
     else:
         print("Задач нет!")
+    print("-" * 25)
 
 
 def compited_task(data):
@@ -56,7 +61,7 @@ def compited_task(data):
         for index, task in enumerate(data["tasks"]):
             print(f'[{index + 1}] {task["name"]}')
 
-        user_task_choice = int(input())
+        user_task_choice = int(input('Выберите задачу, которую хотите отметить как "выполненную": '))
                 
         for task in data["tasks"]:
             if user_task_choice == task["id"]:
@@ -68,29 +73,29 @@ def compited_task(data):
 
 
 def main():
-  
+
     data = load_data()
-    
+
     while True: 
         print("\nПункт управления") 
         print("\n[1] Добавить задачу") 
         print("[2] Посмотреть задачи")
         print("[3] Удалить задачу задачу")
         print("[4] Выход") 
-        
-        user_choice = int(input()) 
-        
+
+        user_choice = int(input("\nВыберите действие: ")) 
+
         if user_choice == 1:  
             add_task(data)
 
         elif user_choice == 2:
             check_tasks(data)
-  
+
         elif user_choice == 3:
             delete_task(data)
 
         elif user_choice == 4: 
-            print("Досвидания!") 
+            print("\nДосвидания!") 
             break
 
 

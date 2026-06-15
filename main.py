@@ -7,6 +7,15 @@ def load_data():
     return data
 
 
+def check_tasks(data):
+    if len(data["tasks"]) > 0:
+        print("Задачи:\n")
+        for task in data["tasks"]:
+            print(f'[{task["id"]}] {task["name"]}')
+        print(f"\nВсего задач: {len(data["tasks"])}")
+    else:
+        print("Задачь нет!")
+
 def add_task(data):
 
     user_task = str(input("Введите задачу: "))
@@ -73,10 +82,7 @@ def main():
             add_task(data)
 
         elif user_choice == 2:
-            print("Задачи:\n")
-            for task in data["tasks"]:
-                print(f'[{task["id"]}] {task["name"]}')
-            print(f"\nВсего задач: {len(data["tasks"])}")
+            check_tasks(data)
   
         elif user_choice == 3:
             if len(data["tasks"]) > 0:

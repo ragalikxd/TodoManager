@@ -28,8 +28,8 @@ def add_task(data):
         'name': user_task, 
         'done': False
         })
-    with open("tasks.json", 'w') as file:
-        json.dump(data, file, indent=4)
+    with open("tasks.json", 'w', encoding='utf8') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
     print("\nЗадача успешно записана!")
     print("-" * 25)
 

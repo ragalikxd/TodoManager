@@ -2,7 +2,7 @@ import json
 
 
 def load_data():
-    with open("tasks.json", 'r') as file:
+    with open("tasks.json", 'r', encoding='utf-8') as file:
         data = json.load(file)
     return data
 
@@ -11,8 +11,8 @@ def check_tasks(data):
     print("-" * 25)
     if len(data["tasks"]) > 0:
         print("Задачи:\n")
-        for task in data["tasks"]:
-            print(f'[{task["id"]}] {task["name"]}')
+        for index, task in enumerate(data["tasks"]):
+            print(f'[{index + 1}] {task["name"]}')
         print(f"\nВсего задач: {len(data["tasks"])}")
     else:
         print("Задач нет!")
@@ -43,12 +43,14 @@ def delete_task(data):
                 
             user_task_choice = int(input("\nВыберите задачу, которую хотите удалить: "))
             
-            for task in data["tasks"]:
-                if user_task_choice == task["id"]:
+            for index, task in enumerate(data["tasks"]):
+                if user_task_choice == index + 1:
                     data['tasks'].remove(task)
+                else:
+                    continue
                     
-            with open("tasks.json", 'w') as file:
-                json.dump(data, file, indent=4)
+            with open("tasks.json", 'w', encoding='utf-8') as file:
+                json.dump(data, file, indent=4, ensure_ascii=False)
             print("\nЗадача успешно удалена!")
             break
     else:

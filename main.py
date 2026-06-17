@@ -74,6 +74,12 @@ def compited_task(data):
         break 
 
 
+def delete_all_tasks(data):
+    data["tasks"].clear()
+    with open("tasks.json", 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
+    print("\nЗадачи успешно удалены!")
+
 def main():
 
     data = load_data()
@@ -83,7 +89,8 @@ def main():
         print("\n[1] Добавить задачу") 
         print("[2] Посмотреть задачи")
         print("[3] Удалить задачу задачу")
-        print("[4] Выход") 
+        print("[4] удалить все задачи")
+        print("[5] Выход") 
 
         user_choice = int(input("\nВыберите действие: ")) 
 
@@ -96,7 +103,10 @@ def main():
         elif user_choice == 3:
             delete_task(data)
 
-        elif user_choice == 4: 
+        elif user_choice == 4:
+            delete_all_tasks(data)
+
+        elif user_choice == 5: 
             print("\nДосвидания!") 
             break
 

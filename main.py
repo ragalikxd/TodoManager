@@ -88,9 +88,10 @@ def main():
         print("\nПункт управления") 
         print("\n[1] Добавить задачу") 
         print("[2] Посмотреть задачи")
-        print("[3] Удалить задачу задачу")
-        print("[4] удалить все задачи")
-        print("[5] Выход") 
+        print("[3] Отметить выполненную задачу")
+        print("[4] Удалить задачу задачу")
+        print("[5] Удалить все задачи")
+        print("[6] Выход") 
 
         user_choice = int(input("\nВыберите действие: ")) 
 
@@ -99,14 +100,17 @@ def main():
 
         elif user_choice == 2:
             check_tasks(data)
-
+            
         elif user_choice == 3:
-            delete_task(data)
+            compited_task(data)
 
         elif user_choice == 4:
+            delete_task(data)
+
+        elif user_choice == 5:
             delete_all_tasks(data)
 
-        elif user_choice == 5: 
+        elif user_choice == 6: 
             print("\nДосвидания!") 
             break
 

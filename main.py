@@ -24,7 +24,7 @@ def add_task(data):
     user_task = str(input("Введите задачу: "))
 
     data["tasks"].append({
-        'id': len(data['tasks']) + 1,
+        'id': (len(data['tasks']) + 1 if len(data['tasks']) + 1 not in data['tasks'] else "?"),
         'name': user_task, 
         'done': False
         })
@@ -70,6 +70,7 @@ def completed_task(data):
             for task in data["tasks"]:
                 if user_task_choice == task["id"]:
                     task['done'] = True
+                    task['name'] = task['name'] + ' ✓'
                     with open("tasks.json", 'w', encoding="utf-8") as file:
                         json.dump(data, file, indent=4, ensure_ascii=False)
                     print('\nЗадача выполнена!') 

@@ -58,7 +58,7 @@ def delete_task(data):
     print("-" * 25)
 
 
-def compited_task(data):
+def completed_task(data):
     print('-' * 25)
     if len(data["tasks"]) > 0:
         while True:
@@ -106,7 +106,7 @@ def main():
             check_tasks(data)
             
         elif user_choice == 3:
-            compited_task(data)
+            completed_task(data)
 
         elif user_choice == 4:
             delete_task(data)

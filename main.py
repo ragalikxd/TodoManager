@@ -59,20 +59,24 @@ def delete_task(data):
 
 
 def compited_task(data):
-   while True:
-        for index, task in enumerate(data["tasks"]):
-            print(f'[{index + 1}] {task["name"]}')
+    print('-' * 25)
+    if len(data["tasks"]) > 0:
+        while True:
+            for index, task in enumerate(data["tasks"]):
+                print(f'[{index + 1}] {task["name"]}')
 
-        user_task_choice = int(input('Выберите задачу, которую хотите отметить как "выполненную": '))
-                
-        for task in data["tasks"]:
-            if user_task_choice == task["id"]:
-                task['done'] = True
-                with open("tasks.json", 'w') as file:
-                    json.dump(data, file, indent=4)
-                print('\nЗадача выполнена!') 
-        break 
-
+            user_task_choice = int(input('Выберите задачу, которую хотите отметить как "выполненную": '))
+                    
+            for task in data["tasks"]:
+                if user_task_choice == task["id"]:
+                    task['done'] = True
+                    with open("tasks.json", 'w', encoding="utf-8") as file:
+                        json.dump(data, file, indent=4, ensure_ascii=False)
+                    print('\nЗадача выполнена!') 
+            break
+    else:
+        print("Задач нет!")
+    print('-' * 25)
 
 def delete_all_tasks(data):
     data["tasks"].clear()

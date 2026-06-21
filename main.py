@@ -24,7 +24,7 @@ def add_task(data):
     user_task = str(input("Введите задачу: "))
 
     data["tasks"].append({
-        'id': (len(data['tasks']) + 1 if len(data['tasks']) + 1 not in data['tasks'] else "?"),
+        'id': len(data['tasks']) + 1,
         'name': user_task, 
         'done': False
         })
@@ -48,6 +48,8 @@ def delete_task(data):
                     data['tasks'].remove(task)
                 else:
                     continue
+            for index, task in enumerate(data['tasks']):
+                task["id"] = index + 1
                     
             with open("tasks.json", 'w', encoding='utf-8') as file:
                 json.dump(data, file, indent=4, ensure_ascii=False)
@@ -94,7 +96,7 @@ def main():
         print("\n[1] Добавить задачу") 
         print("[2] Посмотреть задачи")
         print("[3] Отметить выполненную задачу")
-        print("[4] Удалить задачу задачу")
+        print("[4] Удалить задачу")
         print("[5] Удалить все задачи")
         print("[6] Выход") 
 

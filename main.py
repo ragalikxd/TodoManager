@@ -100,7 +100,11 @@ def main():
         print("[5] Удалить все задачи")
         print("[6] Выход") 
 
-        user_choice = int(input("\nВыберите действие: ")) 
+        try:
+            user_choice = int(input("\nВыберите действие: ")) 
+        except ValueError:
+            print("\nВведите число!")
+            continue
 
         if user_choice == 1:  
             add_task(data)

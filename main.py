@@ -33,8 +33,7 @@ def add_task(data):
         'name': user_task, 
         'done': False
         })
-    with open("tasks.json", 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4, ensure_ascii=False)
+    write_data(data)
     print("\nЗадача успешно записана!")
     print("-" * 25)
 
@@ -56,8 +55,7 @@ def delete_task(data):
             for index, task in enumerate(data['tasks']):
                 task["id"] = index + 1
                     
-            with open("tasks.json", 'w', encoding='utf-8') as file:
-                json.dump(data, file, indent=4, ensure_ascii=False)
+            write_data(data)
             print("\nЗадача успешно удалена!")
             break
     else:
@@ -78,8 +76,7 @@ def completed_task(data):
                 if user_task_choice == task["id"]:
                     task['done'] = True
                     task['name'] = task['name'] + ' ✓'
-                    with open("tasks.json", 'w', encoding="utf-8") as file:
-                        json.dump(data, file, indent=4, ensure_ascii=False)
+                    write_data(data)
                     print('\nЗадача выполнена!') 
             break
     else:
@@ -88,8 +85,7 @@ def completed_task(data):
 
 def delete_all_tasks(data):
     data["tasks"].clear()
-    with open("tasks.json", 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4, ensure_ascii=False)
+    write_data(data)
     print("\nЗадачи успешно удалены!")
 
 def main():

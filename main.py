@@ -17,7 +17,10 @@ def check_tasks(data):
     if len(data["tasks"]) > 0:
         print("Задачи:\n")
         for index, task in enumerate(data["tasks"]):
-            print(f'[{index + 1}] {task["name"]}')
+            if task['done']:
+                print(f'[{index + 1}] {task["name"]} ✓')
+            else:
+                print(f'[{index + 1}] {task["name"]}')
         print(f"\nВсего задач: {len(data["tasks"])}")
     else:
         print("Задач нет!")
@@ -75,7 +78,6 @@ def completed_task(data):
             for task in data["tasks"]:
                 if user_task_choice == task["id"]:
                     task['done'] = True
-                    task['name'] = task['name'] + ' ✓'
                     write_data(data)
                     print('\nЗадача выполнена!') 
             break

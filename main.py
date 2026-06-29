@@ -14,7 +14,7 @@ def load_data():
 
 def check_tasks(data):
     print("-" * 25)
-    if len(data["tasks"]) > 0:
+    if data["tasks"]:
         print("Задачи:\n")
         for index, task in enumerate(data["tasks"]):
             if task['done']:
@@ -71,7 +71,7 @@ def delete_task(data):
 
 def completed_task(data):
     print('-' * 25)
-    if len(data["tasks"]) > 0:
+    if data["tasks"]:
         while True:
             for index, task in enumerate(data["tasks"]):
                 print(f'[{index + 1}] {task["name"]}')
@@ -91,10 +91,17 @@ def completed_task(data):
         print("Задач нет!")
     print('-' * 25)
 
+
 def delete_all_tasks(data):
-    data["tasks"].clear()
-    write_data(data)
-    print("\nЗадачи успешно удалены!")
+    print('-' * 25)
+    if data["tasks"]:
+        data["tasks"].clear()
+        write_data(data)
+        print("\nЗадачи успешно удалены!")
+    else:
+        print("Задач нет")
+    print('-' * 25)
+
 
 def main():
 

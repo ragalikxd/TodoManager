@@ -29,7 +29,7 @@ def check_tasks(data):
 
 def add_task(data):
     print("-" * 25)
-    user_task = str(input("Введите задачу: "))
+    user_task = input("Введите задачу: ")
 
     data["tasks"].append({
         'id': len(data['tasks']) + 1,
@@ -43,7 +43,7 @@ def add_task(data):
 
 def delete_task(data):
     print("-" * 25)
-    if len(data["tasks"]) > 0:
+    if data["tasks"]:
         while True:
             for index, task in enumerate(data["tasks"]):
                 print(f'[{index + 1}] {task["name"]}')

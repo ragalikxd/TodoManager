@@ -49,17 +49,20 @@ def delete_task(data):
                 print(f'[{index + 1}] {task["name"]}')
                 
             user_task_choice = int(input("\nВыберите задачу, которую хотите удалить: "))
-            
-            for index, task in enumerate(data["tasks"]):
-                if user_task_choice == index + 1:
-                    data['tasks'].remove(task)
-                else:
-                    continue
-            for index, task in enumerate(data['tasks']):
-                task["id"] = index + 1
-                    
-            write_data(data)
-            print("\nЗадача успешно удалена!")
+
+            if 1 <= user_task_choice <= len(data['tasks']):
+                for index, task in enumerate(data["tasks"]):
+                    if user_task_choice == index + 1:
+                        data['tasks'].remove(task)
+                    else:
+                        continue
+                for index, task in enumerate(data['tasks']):
+                    task["id"] = index + 1
+  
+                write_data(data)
+                print("\nЗадача успешно удалена!")
+            else:
+                print('\nНе корректный ввод')
             break
     else:
         print("Задач нет!")
@@ -74,12 +77,15 @@ def completed_task(data):
                 print(f'[{index + 1}] {task["name"]}')
 
             user_task_choice = int(input('Выберите задачу, которую хотите отметить как "выполненную": '))
-                    
-            for task in data["tasks"]:
-                if user_task_choice == task["id"]:
-                    task['done'] = True
-                    write_data(data)
-                    print('\nЗадача выполнена!') 
+
+            if 1 <= user_task_choice <= len(data['tasks']):     
+                for task in data["tasks"]:
+                    if user_task_choice == task["id"]:
+                        task['done'] = True
+                        write_data(data)
+                        print('\nЗадача выполнена!')
+            else:
+                print('\nНе корректный ввод')
             break
     else:
         print("Задач нет!")

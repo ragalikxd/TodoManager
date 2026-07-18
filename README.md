@@ -19,7 +19,7 @@ TodoManager позволяет создавать, просматривать и
 
 ## Запуск проекта
 
-1. Клонирутей репозиторий:
+1. Клонируйте репозиторий:
 
 ```bash
 git clone https://github.com/ragalikxd/TodoManager.git
